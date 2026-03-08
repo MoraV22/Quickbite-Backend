@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: quickbite
+server:
+  port:8080
+app:
+  page-size:12
