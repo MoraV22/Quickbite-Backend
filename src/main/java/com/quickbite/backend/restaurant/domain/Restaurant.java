@@ -38,4 +38,32 @@ public class Restaurant {
     @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Review> reviews;
 
+    // Constructors
+    public Restaurant() {}
+
+    public Restaurant(String name, String address, Integer rate, String foodType, LocalTime openHour, LocalTime closeHour) {
+        this.name = name;
+        this.address = address;
+        this.rate = rate;
+        this.foodType = foodType;
+        this.openHour = openHour;
+        this.closeHour = closeHour;
+    }
+
+    // Getters and Setters
+    public Integer getId() { return id; }
+    public void setId(Integer id) { this.id = id; }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+    public String getAddress() { return address; }
+    public void setAddress(String address) { this.address = address; }
+    public Integer getRate() { return rate; }
+    public void setRate(Integer rate) { this.rate = rate; }
+    public String getFoodType() { return foodType; }
+    public void setFoodType(String foodType) { this.foodType = foodType; }
+    public LocalTime getOpenHour() { return openHour; }
+    public void setOpenHour(LocalTime openHour) { this.openHour = openHour; }
+    public LocalTime getCloseHour() { return closeHour; }
+    public void setCloseHour(LocalTime closeHour) { this.closeHour = closeHour; }
+
 }

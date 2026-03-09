@@ -1,16 +1,40 @@
 package com.quickbite.backend.restaurant.dto;
 
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public class MenuItemDTO {
-        @NotBlank
-        private Integer restaurant_id;
-        @NotBlank
+        @NotNull
+        private Integer restaurantId;
+        @NotNull
         private String name;
-        @NotBlank
+        @NotNull
         private String description;
-        @NotBlank
+        @NotNull
         private Double price;
-        @NotBlank
+        @NotNull
         private Double calories;
+
+        // Constructors
+        public MenuItemDTO() {}
+
+        public MenuItemDTO(Integer restaurantId, String name, String description, Double price, Double calories) {
+            this.restaurantId = restaurantId;
+            this.name = name;
+            this.description = description;
+            this.price = price;
+            this.calories = calories;
+        }
+
+        // Getters and Setters
+        public Integer getRestaurantId() { return restaurantId; }
+        public void setRestaurantId(Integer restaurantId) { this.restaurantId = restaurantId; }
+        public String getName() { return name; }
+        public void setName(String name) { this.name = name; }
+        public String getDescription() { return description; }
+        public void setDescription(String description) { this.description = description; }
+        public Double getPrice() { return price; }
+        public void setPrice(Double price) { this.price = price; }
+        public Double getCalories() { return calories; }
+        public void setCalories(Double calories) { this.calories = calories; }
+        
 }

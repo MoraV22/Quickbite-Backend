@@ -25,7 +25,7 @@ public class Review {
     private Integer rate;
 
     @Column(nullable = false)
-    private LocalTime created_at;
+    private LocalTime createdAt;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -34,5 +34,27 @@ public class Review {
     @ManyToOne
     @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
+
+    // Constructors
+    public Review() {}
+
+    public Review(String description, Integer rate, User user, Restaurant restaurant) {
+        this.description = description;
+        this.rate = rate;
+        this.user = user;
+        this.restaurant = restaurant;
+        this.createdAt = LocalTime.now();
+    }
+
+    // Getters and Setters
+    public Integer getId() { return id; }
+    public void setId(Integer id) { this.id = id; }
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
+    public Integer getRate() { return rate; }
+    public void setRate(Integer rate) { this.rate = rate; }
+    public LocalTime getCreatedAt() { return createdAt; }
+    public void setCreatedAt(LocalTime createdAt) { this.createdAt = createdAt; }
+
 
 }
