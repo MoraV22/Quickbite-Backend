@@ -13,9 +13,11 @@ public interface MenuItemRepository extends JpaRepository<MenuItem, Integer> {
 
     Optional<MenuItem> findById(Integer id);
 
-    List<MenuItem> findByPrice(Double price);
-
     List<MenuItem> findByRestaurant(Integer restaurantId);
 
-    List<MenuItem> findByOrder(Integer orderId);
+    MenuItem save(MenuItem menuItem);
+
+    Boolean existsById(Integer id);
+
+    void deleteById(Integer id);
 }

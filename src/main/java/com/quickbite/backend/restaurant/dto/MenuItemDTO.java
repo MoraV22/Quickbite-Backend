@@ -1,8 +1,11 @@
 package com.quickbite.backend.restaurant.dto;
 
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 public class MenuItemDTO {
+        @NotBlank
+        private Integer id;
         @NotNull
         private Integer restaurantId;
         @NotNull
@@ -17,7 +20,8 @@ public class MenuItemDTO {
         // Constructors
         public MenuItemDTO() {}
 
-        public MenuItemDTO(Integer restaurantId, String name, String description, Double price, Double calories) {
+        public MenuItemDTO(Integer id, Integer restaurantId, String name, String description, Double price, Double calories) {
+            this.id= id;
             this.restaurantId = restaurantId;
             this.name = name;
             this.description = description;
@@ -26,6 +30,8 @@ public class MenuItemDTO {
         }
 
         // Getters and Setters
+        public Integer getId() { return id; }
+        public void setId(Integer id) { this.id = id; }
         public Integer getRestaurantId() { return restaurantId; }
         public void setRestaurantId(Integer restaurantId) { this.restaurantId = restaurantId; }
         public String getName() { return name; }

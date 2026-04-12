@@ -13,37 +13,37 @@ import java.util.List;
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    public Integer id;
 
     @Min(0)
     @Column(nullable = false)
-    private double price;
+    public double totalPrice;
 
     @Column(nullable = false)
-    private String address;
+    public String address;
 
     @Min(0)
     @Column(nullable = false)
-    private double tax;
+    public double tax;
 
     @Column(nullable = false)
-    private LocalTime createdAt;
+    public LocalTime createdAt;
 
     @Enumerated(EnumType.STRING)
-    private OrderStatus status;
+    public OrderStatus status;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<OrderItem> orderItems;
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.LAZY)
+    public List<OrderItem> orderItems;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    public User user;
 
     // Constructors
     public Order() {}
 
     public Order(double price, String address, double tax, User user) {
-        this.price = price;
+        this.totalPrice = price;
         this.address = address;
         this.tax = tax;
         this.user = user;
@@ -55,8 +55,8 @@ public class Order {
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
 
-    public double getPrice() { return price; }
-    public void setPrice(double price) { this.price = price; }
+    public double getTotalPrice() { return totalPrice; }
+    public void setTotalPrice(double totalPrice) { this.totalPrice = totalPrice; }
 
     public String getAddress() { return address; }
     public void setAddress(String address) { this.address = address; }

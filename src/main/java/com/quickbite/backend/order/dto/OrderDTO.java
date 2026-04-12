@@ -4,34 +4,44 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalTime;
+import java.util.List;
 
 public class OrderDTO {
-    @NotNull
-    private Integer userId;
-    @NotNull
-    private Double totalPrice;
-    @NotNull
-    private Double tax;
     @NotBlank
-    private String address;
+    private Integer id;
     @NotNull
-    private OrderStatus status;
+    public Integer userId;
     @NotNull
-    private LocalTime createdAt;
+    public Double totalPrice;
+    @NotNull
+    public Double tax;
+    @NotBlank
+    public String address;
+    @NotNull
+    public OrderStatus status;
+    @NotNull
+    public LocalTime createdAt;
+    @NotNull
+    public List<Integer> itemIds;
 
     // Constructors
     public OrderDTO() {}
 
-    public OrderDTO(Integer userId, Double totalPrice, Double tax, String address, OrderStatus status) {
+    public OrderDTO(Integer id,Integer userId, Double totalPrice, Double tax, String address, OrderStatus status, List<Integer> itemIds) {
+        this.id = id;
         this.userId = userId;
         this.totalPrice = totalPrice;
         this.tax = tax;
         this.address = address;
         this.status = status;
         this.createdAt = LocalTime.now();
+        this.itemIds = itemIds;
+
     }
 
     // Getters and Setters
+    public Integer getId() { return id; }
+    public void setId(Integer id) { this.id = id; }
     public Integer getUserId() { return userId; }
     public void setUserId(Integer userId) { this.userId = userId; }
 
@@ -49,4 +59,7 @@ public class OrderDTO {
 
     public LocalTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalTime createdAt) { this.createdAt = createdAt; }
+
+    public List<Integer> getItemIds() { return itemIds; }
+    public void setItemIds(List<Integer> itemIds) { this.itemIds = itemIds; }
 }

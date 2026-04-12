@@ -1,10 +1,10 @@
 package com.quickbite.backend.user.domain;
 
 import com.quickbite.backend.order.domain.Order;
-import com.quickbite.backend.review.domain.Review;
-import jakarta.persistence.*;
-import java.util.List;
 import com.quickbite.backend.user.dto.RoleType;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -43,9 +43,6 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Order> orders;
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Review> reviews;
 
     // Constructors
     public User() {}
@@ -93,6 +90,4 @@ public class User {
     public List<Order> getOrders() { return orders; }
     public void setOrders(List<Order> orders) { this.orders = orders; }
 
-    public List<Review> getReviews() { return reviews; }
-    public void setReviews(List<Review> reviews) { this.reviews = reviews; }
 }

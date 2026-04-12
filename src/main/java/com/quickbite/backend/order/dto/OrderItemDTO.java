@@ -1,8 +1,11 @@
 package com.quickbite.backend.order.dto;
 
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 public class OrderItemDTO {
+    @NotBlank
+    private Integer id;
     @NotNull
     private Integer idOrder;
     @NotNull
@@ -15,7 +18,8 @@ public class OrderItemDTO {
     // Constructors
     public OrderItemDTO() {}
 
-    public OrderItemDTO(Integer idOrder, Integer idItem, Integer quantity, Double price) {
+    public OrderItemDTO(Integer id,Integer idOrder, Integer idItem, Integer quantity, Double price) {
+        this.id = id;
         this.idOrder = idOrder;
         this.idItem = idItem;
         this.quantity = quantity;
@@ -23,6 +27,12 @@ public class OrderItemDTO {
     }
 
     // Getters and Setters
+    public Integer getId() {
+        return id;
+    }
+    public void setId(Integer id) {
+        this.id = id;
+    }
     public Integer getIdOrder() { return idOrder; }
     public void setIdOrder(Integer idOrder) { this.idOrder = idOrder; }
     public Integer getIdItem() { return idItem; }

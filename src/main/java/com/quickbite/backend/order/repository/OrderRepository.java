@@ -3,7 +3,6 @@ package com.quickbite.backend.order.repository;
 import com.quickbite.backend.order.domain.Order;
 import com.quickbite.backend.order.dto.OrderStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -16,4 +15,11 @@ public interface OrderRepository extends JpaRepository<Order, Integer> {
     Optional<Order> findById(Integer orderId);
 
     OrderStatus getOrderStatus(Integer orderId);
+
+    Boolean existsById(Integer orderId);
+
+    Order save(Order order);
+
+    void deleteById(Integer orderId);
+
 }

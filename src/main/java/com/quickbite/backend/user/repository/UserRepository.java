@@ -1,7 +1,6 @@
 package com.quickbite.backend.user.repository;
 
 import com.quickbite.backend.user.domain.User;
-import com.quickbite.backend.user.dto.RoleType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -10,11 +9,15 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
 
+    Optional<User> findByEmail(String email);
+    
     Optional<User> findByName(String name);
 
-    Optional<User> findById(Integer id);
+    Optional<User> findById(Integer userId);
 
-    Optional<RoleType> getUserTypeById(Integer id);
+    User save(User user);
 
-    Optional<Integer> getUserRateById(Integer id);
+    Boolean existsById(Integer id);
+
+    void deleteById(Integer id);
 }

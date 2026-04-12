@@ -1,6 +1,5 @@
 package com.quickbite.backend.restaurant.domain;
 
-import com.quickbite.backend.review.domain.Review;
 import jakarta.persistence.*;
 
 import java.time.LocalTime;
@@ -35,8 +34,6 @@ public class Restaurant {
     @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<MenuItem> menuItems;
 
-    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Review> reviews;
 
     // Constructors
     public Restaurant() {}

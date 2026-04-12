@@ -8,5 +8,14 @@ import java.util.List;
 
 @Repository
 public interface PaymentInfoRepository extends JpaRepository<PaymentInfo, Integer> {
+
     List<PaymentInfo> findPaymentInfoByUserId(Integer userId);
+
+    PaymentInfo findById(Integer paymentInfoId);
+
+    PaymentInfo save(PaymentInfo paymentInfo);
+
+    Boolean existsById(Integer paymentInfoId);
+
+    void deleteById(Integer id);
 }
