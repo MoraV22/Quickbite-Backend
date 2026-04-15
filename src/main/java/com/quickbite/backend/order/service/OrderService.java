@@ -3,7 +3,6 @@ package com.quickbite.backend.order.service;
 import com.quickbite.backend.order.domain.Order;
 import com.quickbite.backend.order.domain.OrderItem;
 import com.quickbite.backend.order.dto.OrderDTO;
-import com.quickbite.backend.order.dto.OrderItemDTO;
 import com.quickbite.backend.order.repository.OrderItemRepository;
 import com.quickbite.backend.order.repository.OrderRepository;
 import com.quickbite.backend.restaurant.domain.MenuItem;
@@ -23,8 +22,7 @@ public class OrderService {
     private final UserRepository userRepository;
     private final MenuItemRepository menuItemRepository;
 
-    public OrderService(OrderRepository orderRepository, OrderItemRepository orderItemRepository,
-                        UserRepository userRepository, MenuItemRepository menuItemRepository) {
+    public OrderService(OrderRepository orderRepository, OrderItemRepository orderItemRepository,UserRepository userRepository, MenuItemRepository menuItemRepository) {
         this.orderRepository = orderRepository;
         this.orderItemRepository = orderItemRepository;
         this.userRepository = userRepository;

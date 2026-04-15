@@ -1,11 +1,156 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title tuesday</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quickbite Backend</title>
+  <meta name="description" content="Quickbite backend service landing page and API quick links." />
+  <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
-<h1>Hello view</h1>
-<h2>Hello view 2</h2>
+<header class="header">
+  <div class="container header__inner">
+    <div class="brand">
+      <div class="brand__mark" aria-hidden="true">QB</div>
+      <div class="brand__text">
+        <div class="brand__name">Quickbite</div>
+        <div class="brand__tag">Backend service</div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <a href="#apis">APIs</a>
+      <a href="#howto">How to</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <h1>Quickbite Backend</h1>
+      <p class="hero__lead">
+        Spring Boot + PostgreSQL backend for the Quickbite food delivery platform.
+      </p>
+
+      <div class="hero__cta">
+        <a class="button button--primary" href="#apis">Explore API endpoints</a>
+        <a class="button" href="/api/health" target="_blank" rel="noreferrer">Open /api/health</a>
+      </div>
+
+      <div class="hero__meta" id="status">
+        <div class="status" role="status" aria-live="polite">
+          <span class="status__dot" id="statusDot" aria-hidden="true"></span>
+          <span class="status__text" id="statusText">Checking API status…</span>
+        </div>
+        <div class="muted" id="statusDetails"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="apis">
+    <div class="container">
+      <h2>API quick links</h2>
+      <p class="muted">These are links to your running local service.</p>
+
+      <div class="grid">
+        <article class="card">
+          <h3>Orders</h3>
+          <p class="muted">Create and manage orders.</p>
+          <div class="card__links">
+            <a href="/api/order/id/1" target="_blank" rel="noreferrer">GET /api/order/id/1</a>
+            <a href="/api/order/userId/1" target="_blank" rel="noreferrer">GET /api/order/userId/1</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Users</h3>
+          <p class="muted">User management endpoints.</p>
+          <div class="card__links">
+            <a href="/api/user" target="_blank" rel="noreferrer">GET /api/user</a>
+            <a href="/api/user/id/1" target="_blank" rel="noreferrer">GET /api/user/id/1</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Restaurants</h3>
+          <p class="muted">Browse restaurants and their details.</p>
+          <div class="card__links">
+            <a href="/api/restaurant" target="_blank" rel="noreferrer">GET /api/restaurant</a>
+            <a href="/api/restaurant/open" target="_blank" rel="noreferrer">GET /api/restaurant/open</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Menu items</h3>
+          <p class="muted">Menus for restaurants.</p>
+          <div class="card__links">
+            <a href="/api/menu-item" target="_blank" rel="noreferrer">GET /api/menu-item</a>
+            <a href="/api/menu-item/restaurantId/1" target="_blank" rel="noreferrer">GET /api/menu-item/restaurantId/1</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Payment info</h3>
+          <p class="muted">Payment methods for users.</p>
+          <div class="card__links">
+            <a href="/api/payment-info/id/1" target="_blank" rel="noreferrer">GET /api/payment-info/id/1</a>
+            <a href="/api/payment-info/user/1" target="_blank" rel="noreferrer">GET /api/payment-info/user/1</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Health</h3>
+          <p class="muted">Simple status endpoint for the service.</p>
+          <div class="card__links">
+            <a href="/api/health" target="_blank" rel="noreferrer">GET /api/health</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="howto">
+    <div class="container">
+      <h2>How to call the API</h2>
+      <p class="muted">Example commands (PowerShell):</p>
+
+      <div class="codeGrid">
+        <div class="codeCard">
+          <div class="codeCard__title">Health check</div>
+          <pre><code>Invoke-RestMethod http://localhost:8080/api/health</code></pre>
+        </div>
+
+        <div class="codeCard">
+          <div class="codeCard__title">List users</div>
+          <pre><code>Invoke-RestMethod http://localhost:8080/api/user</code></pre>
+        </div>
+
+        <div class="codeCard">
+          <div class="codeCard__title">List restaurants</div>
+          <pre><code>Invoke-RestMethod http://localhost:8080/api/restaurant</code></pre>
+        </div>
+      </div>
+
+      <p class="muted small">
+        Note: endpoints like <code>/api/order/id/1</code> require data to exist in the database.
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div>
+      <strong>Quickbite</strong> • Spring Boot service
+    </div>
+    <div class="muted small">
+      Served from <code>src/main/resources/static</code>
+    </div>
+  </div>
+</footer>
+
+<script src="/app.js"></script>
 </body>
 </html>
+

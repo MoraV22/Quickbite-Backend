@@ -51,9 +51,11 @@ public class PaymentInfoService {
      */
     @Transactional
     public PaymentInfo updatePaymentInfo(Integer paymentInfoId, PaymentInfoDTO paymentInfoDTO) {
-        PaymentInfo paymentInfo = paymentInfoRepository.findById(paymentInfoId);
+        PaymentInfo paymentInfo = paymentInfoRepository.findById(paymentInfoId)
+                .orElseThrow(() -> new EntityNotFoundException("Payment info not found with ID: " + paymentInfoId));
 
-        if (paymentInfoRepository.existsById(paymentInfo.getId())){
+
+        if (!paymentInfoRepository.existsById(paymentInfo.getId())){
             throw new EntityNotFoundException("Payment info not found with ID: " + paymentInfoId);
         }
 
@@ -77,9 +79,11 @@ public class PaymentInfoService {
      * Get payment info by ID
      */
     public PaymentInfo getPaymentInfoById(Integer paymentInfoId) {
-        PaymentInfo paymentInfo = paymentInfoRepository.findById(paymentInfoId);
+        PaymentInfo paymentInfo = paymentInfoRepository.findById(paymentInfoId)
+                .orElseThrow(() -> new EntityNotFoundException("Payment info not found with ID: " + paymentInfoId));
 
-        if(paymentInfoRepository.existsById(paymentInfo.getId())){
+
+        if(!paymentInfoRepository.existsById(paymentInfo.getId())){
                     throw new EntityNotFoundException("Payment info not found with ID: " + paymentInfoId);
                 }
 
@@ -87,7 +91,7 @@ public class PaymentInfoService {
     }
 
     public List<PaymentInfo> getPaymentInfoByUserId(Integer userId) {
-        if(paymentInfoRepository.existsById(userId)) {
+        if(!paymentInfoRepository.existsById(userId)) {
             throw new EntityNotFoundException("User not found with ID: " + userId);
         }
         return paymentInfoRepository.findByUser(userId);

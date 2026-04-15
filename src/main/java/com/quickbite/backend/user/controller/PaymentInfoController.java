@@ -17,8 +17,11 @@ import java.util.Objects;
 @CrossOrigin(origins = "*")
 public class PaymentInfoController {
 
-    @Autowired
-    private PaymentInfoService paymentInfoService;
+
+    private final PaymentInfoService paymentInfoService;
+    public PaymentInfoController(PaymentInfoService paymentInfoService) {
+        this.paymentInfoService = paymentInfoService;
+    }
 
     /**
      * Add a payment method to a user

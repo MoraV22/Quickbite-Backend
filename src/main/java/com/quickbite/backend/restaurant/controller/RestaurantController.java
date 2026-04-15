@@ -16,8 +16,12 @@ import java.util.Objects;
 @RequestMapping("/api/restaurant")
 @CrossOrigin(origins = "*")
 public class RestaurantController {
-    @Autowired
-    private RestaurantService restaurantService;
+
+    private final RestaurantService restaurantService;
+
+    public  RestaurantController(RestaurantService restaurantService) {
+        this.restaurantService = restaurantService;
+    }
 
     /**
      * Create a new user

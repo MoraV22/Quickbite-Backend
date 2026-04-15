@@ -66,8 +66,18 @@ public class RestaurantService {
 
         // UPDATE RESTAURANT
     public Restaurant updateRestaurant(Integer id, RestaurantDTO dto) {
-        return restaurantRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Restaurant not found with id: " + id));
+
+        Restaurant restaurant= restaurantRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Restaurant not found with id: " + id));
+        restaurant.setName(dto.getName());
+        restaurant.setFoodType(dto.getFoodType());
+        restaurant.setRate(dto.getRate() != null ? dto.getRate() : 1);
+        restaurant.setOpenHour(dto.getOpenHour());
+        restaurant.setCloseHour(dto.getCloseHour());
+        restaurant.setAddress(dto.getAddress());
+
+        return restaurantRepository.save(restaurant);
+
+
     }
 
         // DELETE RESTAURANT
