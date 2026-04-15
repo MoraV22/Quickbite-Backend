@@ -53,10 +53,6 @@ public class RestaurantService {
         return restaurantRepository.findAnyOpen(java.time.LocalTime.now());
     }
 
-    // GET RESTAURANTS BY FOOD TYPE
-    public List<Restaurant> getRestaurantsByFoodType(String foodType) {
-        return restaurantRepository.findByFoodType(foodType);
-    }
 
     // GET RESTAURANTS BY RATE
     public List<Restaurant> getRestaurantsByRate(Integer rate) {

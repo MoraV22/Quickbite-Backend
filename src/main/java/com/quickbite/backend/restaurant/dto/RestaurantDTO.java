@@ -7,6 +7,8 @@ import jakarta.validation.constraints.NotNull;
 import java.time.LocalTime;
 
 public class RestaurantDTO {
+    @NotNull
+    private Integer id;
     @NotBlank
     private String name;
     @NotBlank
@@ -23,7 +25,8 @@ public class RestaurantDTO {
     // Constructors
     public RestaurantDTO() {}
 
-    public RestaurantDTO(String name, String address, Integer rate, String foodType, LocalTime openHour, LocalTime closeHour) {
+    public RestaurantDTO(Integer id,String name, String address, Integer rate, String foodType, LocalTime openHour, LocalTime closeHour) {
+        this.id = id;
             this.name = name;
             this.address = address;
             this.rate = rate;
@@ -33,6 +36,10 @@ public class RestaurantDTO {
         }
 
     // Getters and Setters
+    public Integer getId() {
+        return id;
+    }
+    public void setId(Integer id) {}
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
 

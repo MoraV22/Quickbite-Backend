@@ -9,6 +9,8 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class PaymentInfoService {
 
@@ -25,7 +27,7 @@ public class PaymentInfoService {
      * This avoids loading the entire User object
      */
     @Transactional
-    public PaymentInfoDTO createPaymentInfo(PaymentInfoDTO paymentInfoDTO) {
+    public PaymentInfo createPaymentInfo(PaymentInfoDTO paymentInfoDTO) {
         // Verify that the user exists with the given ID
         User user = userRepository.findById(paymentInfoDTO.getUserId())
                 .orElseThrow(() -> new EntityNotFoundException("User not found with ID: " + paymentInfoDTO.getUserId()));
@@ -39,8 +41,8 @@ public class PaymentInfoService {
                 user
         );
 
-        PaymentInfo savedPaymentInfo = paymentInfoRepository.save(paymentInfo);
-        return convertToDTO(savedPaymentInfo);
+
+        return paymentInfoRepository.save(paymentInfo);
     }
 
     /**
@@ -48,7 +50,7 @@ public class PaymentInfoService {
      * This avoids loading the entire User object
      */
     @Transactional
-    public PaymentInfoDTO updatePaymentInfo(Integer paymentInfoId, PaymentInfoDTO paymentInfoDTO) {
+    public PaymentInfo updatePaymentInfo(Integer paymentInfoId, PaymentInfoDTO paymentInfoDTO) {
         PaymentInfo paymentInfo = paymentInfoRepository.findById(paymentInfoId);
 
         if (paymentInfoRepository.existsById(paymentInfo.getId())){
@@ -67,21 +69,28 @@ public class PaymentInfoService {
         paymentInfo.setExpirationMonth(paymentInfoDTO.getExpirationMonth());
         paymentInfo.setExpirationYear(paymentInfoDTO.getExpirationYear());
 
-        PaymentInfo updatedPaymentInfo = paymentInfoRepository.save(paymentInfo);
-        return convertToDTO(updatedPaymentInfo);
+
+        return paymentInfoRepository.save(paymentInfo);
     }
 
     /**
-     * Get payment info by ID and return as DTO (only includes User ID)
+     * Get payment info by ID
      */
-    public PaymentInfoDTO getPaymentInfoById(Integer paymentInfoId) {
+    public PaymentInfo getPaymentInfoById(Integer paymentInfoId) {
         PaymentInfo paymentInfo = paymentInfoRepository.findById(paymentInfoId);
 
         if(paymentInfoRepository.existsById(paymentInfo.getId())){
                     throw new EntityNotFoundException("Payment info not found with ID: " + paymentInfoId);
                 }
 
-        return convertToDTO(paymentInfo);
+        return paymentInfo;
+    }
+
+    public List<PaymentInfo> getPaymentInfoByUserId(Integer userId) {
+        if(paymentInfoRepository.existsById(userId)) {
+            throw new EntityNotFoundException("User not found with ID: " + userId);
+        }
+        return paymentInfoRepository.findByUser(userId);
     }
 
     /**
@@ -95,18 +104,4 @@ public class PaymentInfoService {
         paymentInfoRepository.deleteById(paymentInfoId);
     }
 
-    /**
-     * Convert PaymentInfo entity to PaymentInfoDTO
-     * Only includes the User ID, not the entire User object
-     */
-    private PaymentInfoDTO convertToDTO(PaymentInfo paymentInfo) {
-        return new PaymentInfoDTO(
-                paymentInfo.getId(),
-                paymentInfo.getCardLast4(),
-                paymentInfo.getBrand(),
-                paymentInfo.getExpirationMonth(),
-                paymentInfo.getExpirationYear(),
-                paymentInfo.getUser().getId()
-        );
-    }
 }

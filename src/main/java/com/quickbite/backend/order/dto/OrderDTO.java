@@ -22,12 +22,12 @@ public class OrderDTO {
     @NotNull
     public LocalTime createdAt;
     @NotNull
-    public List<Integer> itemIds;
+    public List<OrderItemDTO> items;
 
     // Constructors
     public OrderDTO() {}
 
-    public OrderDTO(Integer id,Integer userId, Double totalPrice, Double tax, String address, OrderStatus status, List<Integer> itemIds) {
+    public OrderDTO(Integer id,Integer userId, Double totalPrice, Double tax, String address, OrderStatus status, List<OrderItemDTO> itemIds) {
         this.id = id;
         this.userId = userId;
         this.totalPrice = totalPrice;
@@ -35,7 +35,7 @@ public class OrderDTO {
         this.address = address;
         this.status = status;
         this.createdAt = LocalTime.now();
-        this.itemIds = itemIds;
+        this.items = itemIds;
 
     }
 
@@ -60,6 +60,6 @@ public class OrderDTO {
     public LocalTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalTime createdAt) { this.createdAt = createdAt; }
 
-    public List<Integer> getItemIds() { return itemIds; }
-    public void setItemIds(List<Integer> itemIds) { this.itemIds = itemIds; }
+    public List<OrderItemDTO> getItems() { return items; }
+    public void setItems(List<OrderItemDTO> items) { this.items = items; }
 }

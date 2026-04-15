@@ -67,10 +67,17 @@ public class UserService {
         User user = userRepository.findById(dto.getId())
                 .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + dto.getId()));
 
+        if (!user.getEmail().equals(dto.getEmail()) && userRepository.findByEmail(dto.getEmail()).isPresent()) {
+            throw new IllegalArgumentException("Email already exists");
+        }
         user.setName(dto.getName());
         user.setSurname1(dto.getSurname1());
         user.setSurname2(dto.getSurname2());
         user.setPhoneNumber(dto.getPhoneNumber());
+        user.setUserType(dto.getUserType());
+        user.setEmail(dto.getEmail());
+        user.setRate(dto.getRate() != null ? dto.getRate() : 1);
+        user.setPassword(dto.getPassword());
 
         return userRepository.save(user);
     }

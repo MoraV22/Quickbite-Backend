@@ -5,7 +5,6 @@ import com.quickbite.backend.restaurant.domain.Restaurant;
 import com.quickbite.backend.restaurant.dto.MenuItemDTO;
 import com.quickbite.backend.restaurant.repository.MenuItemRepository;
 import com.quickbite.backend.restaurant.repository.RestaurantRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
