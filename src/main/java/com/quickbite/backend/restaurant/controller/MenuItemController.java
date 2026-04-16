@@ -9,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Objects;
 
 @RestController
 @RequestMapping("/api/menu-item")
@@ -58,10 +57,7 @@ public class MenuItemController {
      */
     @PutMapping("/id/{id}")
     public ResponseEntity<MenuItem> updateMenuItem(@PathVariable Integer id, @RequestBody MenuItemDTO menuItemDTO){
-        if(!Objects.equals(id, menuItemDTO.getId())) {
-            return ResponseEntity.badRequest().build();
-        }
-        MenuItem menuItemUpdated = menuItemService.updateMenuItem(menuItemDTO);
+        MenuItem menuItemUpdated = menuItemService.updateMenuItem(menuItemDTO,id);
         return ResponseEntity.ok(menuItemUpdated);
     }
 

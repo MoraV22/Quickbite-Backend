@@ -21,4 +21,6 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, Integer>
 
     Optional<Restaurant> findByName(String name);
 
+    List<Restaurant> findByUserId(Integer userId);
+
 }

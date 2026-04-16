@@ -19,28 +19,33 @@ POST http://localhost:8080/api/restaurant
 Content-Type: application/json
 
 {
-  "id": 5,
-  "name": "Ifeanyi's Diner",
-  "foodType": "Italian",
-  "address": "123 Main St, Anytown",
-  "openHour": "08:00",
-  "closeHour": "22:00",
-  "rate": 4
+  "name": "Carlos' Pizzeria",
+  "foodType": "Chinese",
+  "address": "456 Elm St, Othertown",
+  "openHour": "10:00",
+  "closeHour": "23:00",
+  "rate": 3,
+  "userId": 7
 
 }
 
+### Get all restaurant by owner
+GET http://localhost:8080/api/restaurant/ownerId/3
+Content-Type: application/json
+
 ### Update an existing restaurant
-PUT http://localhost:8080/api/restaurant/id/5
+PUT http://localhost:8080/api/restaurant/id/11
 Content-Type: application/json
 
 {
-  "id": 5,
-  "name": "Ifeanyi's Diner",
-  "foodType": "African",
-  "address": "123 Main St, Anytown",
-  "openHour": "08:00",
-  "closeHour": "22:00",
-  "rate": 4
+  "name": "Carlos' Pizzeria",
+  "foodType": "Taiwanese",
+  "address": "456 Elm St, Othertown",
+  "openHour": "10:00",
+  "closeHour": "23:00",
+  "rate": 3,
+  "userId": 7
+
 }
 
 ### Delete a restaurant by ID

@@ -70,10 +70,7 @@ public class UserController {
     public ResponseEntity<User> updateUser(
             @PathVariable Integer id,
             @Valid @RequestBody UserDTO userDTO) {
-        if (!Objects.equals(id, userDTO.getId())) {
-            return ResponseEntity.badRequest().build();
-        }
-        User updatedUser = userService.updateUser(userDTO);
+        User updatedUser = userService.updateUser(userDTO, id);
         return ResponseEntity.ok(updatedUser);
     }
 

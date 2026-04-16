@@ -4,8 +4,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 public class MenuItemDTO {
-        @NotNull
-        private Integer id;
+
         @NotNull
         private Integer restaurantId;
         @NotBlank
@@ -20,8 +19,7 @@ public class MenuItemDTO {
         // Constructors
         public MenuItemDTO() {}
 
-        public MenuItemDTO(Integer id, Integer restaurantId, String name, String description, Double price, Double calories) {
-            this.id= id;
+        public MenuItemDTO(Integer restaurantId, String name, String description, Double price, Double calories) {
             this.restaurantId = restaurantId;
             this.name = name;
             this.description = description;
@@ -30,8 +28,6 @@ public class MenuItemDTO {
         }
 
         // Getters and Setters
-        public Integer getId() { return id; }
-        public void setId(Integer id) { this.id = id; }
         public Integer getRestaurantId() { return restaurantId; }
         public void setRestaurantId(Integer restaurantId) { this.restaurantId = restaurantId; }
         public String getName() { return name; }

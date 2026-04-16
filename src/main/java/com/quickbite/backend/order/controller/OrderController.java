@@ -39,10 +39,7 @@ public class OrderController {
      */
     @PutMapping("/id/{id}")
     public ResponseEntity<Order> updateOrder(@PathVariable Integer id,@Valid @RequestBody OrderDTO orderDTO) {
-        if(!Objects.equals(id, orderDTO.getId())){
-            return ResponseEntity.badRequest().build();
-        }
-        Order updatedOrder = orderService.updateOrder(orderDTO);
+        Order updatedOrder = orderService.updateOrder(orderDTO, id);
         return ResponseEntity.ok(updatedOrder);
     }
 

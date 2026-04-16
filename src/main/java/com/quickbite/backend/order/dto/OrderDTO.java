@@ -8,8 +8,7 @@ import java.time.LocalTime;
 import java.util.List;
 
 public class OrderDTO {
-    @NotNull
-    private Integer id;
+
     @NotNull
     public Integer userId;
     @NotBlank
@@ -24,8 +23,7 @@ public class OrderDTO {
     // Constructors
     public OrderDTO() {}
 
-    public OrderDTO(Integer id,Integer userId, String address, OrderStatus status, List<OrderItemDTO> itemIds) {
-        this.id = id;
+    public OrderDTO(Integer userId, String address, OrderStatus status, List<OrderItemDTO> itemIds) {
         this.userId = userId;
         this.address = address;
         this.status = status;
@@ -35,8 +33,6 @@ public class OrderDTO {
     }
 
     // Getters and Setters
-    public Integer getId() { return id; }
-    public void setId(Integer id) { this.id = id; }
     public Integer getUserId() { return userId; }
     public void setUserId(Integer userId) { this.userId = userId; }
 

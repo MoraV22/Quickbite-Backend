@@ -11,25 +11,23 @@ POST http://localhost:8080/api/menu-item
 Content-Type: application/json
 
 {
-  "id": 14,
-  "name": "Spaghetti Carbonara",
-  "description": "Classic Italian pasta dish with eggs, cheese, pancetta, and pepper.",
-  "price": 12.99,
-  "restaurantId": 5,
-  "calories": 850
+  "name": "Pizzetta Margherita",
+  "description": "A small, delicious pizza topped with fresh tomatoes, mozzarella cheese, and basil leaves.",
+  "price": 9.99,
+  "restaurantId": 6,
+  "calories": 700
 }
 
 ### Update an existing menu item
-PUT http://localhost:8080/api/menu-item/id/17
+PUT http://localhost:8080/api/menu-item/id/18
 Content-Type: application/json
 
 {
-  "id": 17,
-  "name": "Spaghetti Carbonara",
-  "description": "Classic Italian pasta dish with eggs, cheese, pancetta, and pepper.",
-  "price": 13.99,
-  "restaurantId": 5,
-  "calories": 850
+  "name": "Pizzetta Margherita",
+  "description": "A small, delicious pizza topped with fresh tomatoes, mozzarella cheese, and basil leaves.",
+  "price": 29.99,
+  "restaurantId": 6,
+  "calories": 700
 }
 
 ### Delete a menu item

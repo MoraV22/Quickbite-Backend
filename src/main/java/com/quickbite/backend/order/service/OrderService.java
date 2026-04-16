@@ -78,8 +78,8 @@ public class OrderService {
     }
 
     // UPDATE: Order status/address
-    public Order updateOrder(OrderDTO orderDTO) {
-        Order order = orderRepository.findById(orderDTO.getId())
+    public Order updateOrder(OrderDTO orderDTO, Integer orderId) {
+        Order order = orderRepository.findById(orderId)
                 .orElseThrow(() -> new RuntimeException("Order not found"));
 
         order.setStatus(orderDTO.getStatus());

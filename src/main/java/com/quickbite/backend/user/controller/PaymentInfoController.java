@@ -39,9 +39,6 @@ public class PaymentInfoController {
      */
     @PutMapping("/id/{id}")
     public ResponseEntity<PaymentInfo> updatePaymentInfo(@PathVariable Integer id, @Valid @RequestBody PaymentInfoDTO paymentInfoDTO) {
-        if(!Objects.equals(paymentInfoDTO.getId(), id)){
-            return  ResponseEntity.badRequest().build();
-        }
         PaymentInfo updatedPaymentInfo = paymentInfoService.updatePaymentInfo(id, paymentInfoDTO);
         return ResponseEntity.ok(updatedPaymentInfo);
     }

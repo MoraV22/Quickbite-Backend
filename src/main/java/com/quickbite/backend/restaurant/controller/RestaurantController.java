@@ -4,13 +4,11 @@ import com.quickbite.backend.restaurant.domain.Restaurant;
 import com.quickbite.backend.restaurant.dto.RestaurantDTO;
 import com.quickbite.backend.restaurant.service.RestaurantService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Objects;
 
 @RestController
 @RequestMapping("/api/restaurant")
@@ -85,14 +83,22 @@ public class RestaurantController {
     }
 
     /**
+     * Get all restaurants by owner
+     * GET /api/restaurant/ownerId/{ownerId}
+     */
+
+    @GetMapping("/ownerId/{ownerId}")
+    public ResponseEntity<List<Restaurant>> getAllRestaurantsByOwnerId(@PathVariable Integer ownerId) {
+        List<Restaurant> restaurants = restaurantService.getRestaurantsByOwner(ownerId);
+        return ResponseEntity.ok(restaurants);
+    }
+
+    /**
      * Update restaurant info
      * PUT /api/restaurant/id/{id}
      */
     @PutMapping("/id/{id}")
     public ResponseEntity<Restaurant>  updateRestaurant(@PathVariable Integer id, @RequestBody RestaurantDTO restaurantDTO) {
-        if(!Objects.equals(restaurantDTO.getId(), id)){
-            return ResponseEntity.badRequest().build();
-        }
         Restaurant restaurant = restaurantService.updateRestaurant(id, restaurantDTO);
         return ResponseEntity.ok(restaurant);
     }

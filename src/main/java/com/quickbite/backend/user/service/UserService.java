@@ -35,7 +35,7 @@ public class UserService {
         user.setPassword(dto.getPassword());
         user.setPhoneNumber(dto.getPhoneNumber());
         user.setUserType(dto.getUserType());
-        user.setRate(dto.getRate() != null ? dto.getRate() : 1);
+        user.setRate(dto.getRate());
 
         return userRepository.save(user);
     }
@@ -62,10 +62,10 @@ public class UserService {
 
 
     // UPDATE USER
-    public User updateUser(UserDTO dto){
+    public User updateUser(UserDTO dto, Integer id){
 
-        User user = userRepository.findById(dto.getId())
-                .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + dto.getId()));
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + id));
 
         if (!user.getEmail().equals(dto.getEmail()) && userRepository.findByEmail(dto.getEmail()).isPresent()) {
             throw new IllegalArgumentException("Email already exists");
@@ -76,7 +76,7 @@ public class UserService {
         user.setPhoneNumber(dto.getPhoneNumber());
         user.setUserType(dto.getUserType());
         user.setEmail(dto.getEmail());
-        user.setRate(dto.getRate() != null ? dto.getRate() : 1);
+        user.setRate(dto.getRate() != null ? dto.getRate() : user.getRate());
         user.setPassword(dto.getPassword());
 
         return userRepository.save(user);

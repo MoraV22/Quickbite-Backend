@@ -3,6 +3,7 @@ package com.quickbite.backend.user.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.quickbite.backend.order.domain.Order;
+import com.quickbite.backend.restaurant.domain.Restaurant;
 import com.quickbite.backend.user.dto.RoleType;
 import jakarta.persistence.*;
 
@@ -48,6 +49,10 @@ public class User {
     @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Order> orders;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Restaurant> restaurants;
 
     // Constructors
     public User() {}

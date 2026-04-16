@@ -39,9 +39,9 @@ public class MenuItemService {
         return menuItemRepository.findByRestaurantId(restaurantId);
     }
 
-    public MenuItem updateMenuItem(MenuItemDTO dto) {
+    public MenuItem updateMenuItem(MenuItemDTO dto, Integer menuItemId) {
         Restaurant restaurant = restaurantRepository.findById(dto.getRestaurantId()).orElseThrow(()-> new IllegalArgumentException("Restaurant with id " + dto.getRestaurantId() + " does not exist"));
-        MenuItem menuItem = menuItemRepository.findById(dto.getId()).orElseThrow(()-> new IllegalArgumentException("Menu item with id " + dto.getId() + " does not exist"));
+        MenuItem menuItem = menuItemRepository.findById(menuItemId).orElseThrow(()-> new IllegalArgumentException("Menu item with id " + menuItemId + " does not exist"));
         menuItem.setName(dto.getName());
         menuItem.setDescription(dto.getDescription());
         menuItem.setPrice(dto.getPrice());

@@ -5,8 +5,6 @@ import jakarta.validation.constraints.NotNull;
 
 public class UserDTO {
 
-    @NotNull
-    private Integer id;
     @NotBlank
     private String name;
 
@@ -33,31 +31,26 @@ public class UserDTO {
     // Constructors
     public UserDTO() {}
 
-    public UserDTO(Integer id,String name, String surname1,String surname2, String email, String password, RoleType userType) {
-        this.id = id;
+    public UserDTO(String name, String surname1,String surname2, String email, String password, RoleType userType,  Integer rate) {
         this.name = name;
         this.surname1 = surname1;
         this.surname2 = surname2;
         this.email = email;
         this.password = password;
         this.userType = userType;
-        this.rate = 0;
+        this.rate = 5;
+        this.rate = rate;
     }
 
-    public UserDTO(Integer id,String name, String surname1, String email, String password, RoleType userType) {
-        this.id = id;
+    public UserDTO(Integer id,String name, String surname1, String email, String password, RoleType userType,  Integer rate) {
         this.name = name;
         this.surname1 = surname1;
         this.email = email;
         this.password = password;
         this.userType = userType;
-        this.rate = 0;
+        this.rate = rate;
     }
     // Getters and Setters
-    public Integer getId() {
-        return id;
-    }
-    public void setId(Integer id){this.id = id;}
 
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }

@@ -19,11 +19,10 @@ Content-Type: application/json
 }
 
 ### Update payment info
-PUT http://localhost:8080/api/payment-info/id/4
+PUT http://localhost:8080/api/payment-info/id/5
 Content-Type: application/json
 
 {
-  "id": 4,
   "userId": 1,
   "cardLast4": "1254",
   "expirationYear": 2030,

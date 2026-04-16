@@ -1,6 +1,7 @@
 package com.quickbite.backend.restaurant.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.quickbite.backend.user.domain.User;
 import jakarta.persistence.*;
 
 import java.time.LocalTime;
@@ -36,17 +37,23 @@ public class Restaurant {
     @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<MenuItem> menuItems;
 
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
 
     // Constructors
     public Restaurant() {}
 
-    public Restaurant(String name, String address, Integer rate, String foodType, LocalTime openHour, LocalTime closeHour) {
+    public Restaurant(String name, String address, Integer rate, String foodType, LocalTime openHour, LocalTime closeHour, User user) {
         this.name = name;
         this.address = address;
         this.rate = rate;
         this.foodType = foodType;
         this.openHour = openHour;
         this.closeHour = closeHour;
+        this.user = user;
     }
 
     // Getters and Setters
@@ -64,5 +71,6 @@ public class Restaurant {
     public void setOpenHour(LocalTime openHour) { this.openHour = openHour; }
     public LocalTime getCloseHour() { return closeHour; }
     public void setCloseHour(LocalTime closeHour) { this.closeHour = closeHour; }
+    public void setUser(User user) { this.user = user; }
 
 }
