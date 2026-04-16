@@ -37,7 +37,7 @@ public class RestaurantController {
      * Get restaurant by ID
      * GET /api/restaurant/{id}
      */
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public ResponseEntity<Restaurant> getRestaurantById(@PathVariable Integer id) {
         Restaurant restaurant = restaurantService.getRestaurantById(id);
         return ResponseEntity.ok(restaurant);

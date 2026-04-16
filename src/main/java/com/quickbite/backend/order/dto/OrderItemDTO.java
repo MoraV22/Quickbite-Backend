@@ -4,10 +4,8 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 public class OrderItemDTO {
-    @NotBlank
-    private Integer id;
     @NotNull
-    private Integer idOrder;
+    private Integer id;
     @NotNull
     private Integer idItem;
     @NotNull
@@ -18,9 +16,8 @@ public class OrderItemDTO {
     // Constructors
     public OrderItemDTO() {}
 
-    public OrderItemDTO(Integer id,Integer idOrder, Integer idItem, Integer quantity, Double price) {
+    public OrderItemDTO(Integer id, Integer idItem, Integer quantity, Double price) {
         this.id = id;
-        this.idOrder = idOrder;
         this.idItem = idItem;
         this.quantity = quantity;
         this.price = price;
@@ -33,8 +30,6 @@ public class OrderItemDTO {
     public void setId(Integer id) {
         this.id = id;
     }
-    public Integer getIdOrder() { return idOrder; }
-    public void setIdOrder(Integer idOrder) { this.idOrder = idOrder; }
     public Integer getIdItem() { return idItem; }
     public void setIdItem(Integer idItem) { this.idItem = idItem; }
     public Integer getQuantity() { return quantity; }

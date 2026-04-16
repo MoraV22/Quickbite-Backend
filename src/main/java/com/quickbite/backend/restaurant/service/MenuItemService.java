@@ -27,6 +27,7 @@ public class MenuItemService {
         menuItem.setDescription(dto.getDescription());
         menuItem.setPrice(dto.getPrice());
         menuItem.setRestaurant(restaurant);
+        menuItem.setCalories(dto.getCalories());
         return menuItemRepository.save(menuItem);
     }
 

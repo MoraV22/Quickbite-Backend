@@ -4,7 +4,6 @@ import com.quickbite.backend.restaurant.domain.MenuItem;
 import com.quickbite.backend.restaurant.dto.MenuItemDTO;
 import com.quickbite.backend.restaurant.service.MenuItemService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

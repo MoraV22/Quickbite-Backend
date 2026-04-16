@@ -26,14 +26,18 @@ public class RestaurantService {
         }
 
         Restaurant restaurant = new Restaurant();
+        restaurantFromDTO(dto, restaurant);
+        restaurant.setRate(dto.getRate() != null ? dto.getRate() : 1);
+        return restaurantRepository.save(restaurant);
+    }
+
+    private void restaurantFromDTO(RestaurantDTO dto, Restaurant restaurant) {
         restaurant.setName(dto.getName());
         restaurant.setFoodType(dto.getFoodType());
-        restaurant.setRate(dto.getRate() != null ? dto.getRate() : 1);
+        restaurant.setRate(dto.getRate() != null ? dto.getRate() : 3);
         restaurant.setOpenHour(dto.getOpenHour());
         restaurant.setCloseHour(dto.getCloseHour());
         restaurant.setAddress(dto.getAddress());
-        restaurant.setRate(dto.getRate() != null ? dto.getRate() : 1);
-        return restaurantRepository.save(restaurant);
     }
 
     // GET RESTAURANT BY ID
@@ -68,12 +72,7 @@ public class RestaurantService {
     public Restaurant updateRestaurant(Integer id, RestaurantDTO dto) {
 
         Restaurant restaurant= restaurantRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Restaurant not found with id: " + id));
-        restaurant.setName(dto.getName());
-        restaurant.setFoodType(dto.getFoodType());
-        restaurant.setRate(dto.getRate() != null ? dto.getRate() : 1);
-        restaurant.setOpenHour(dto.getOpenHour());
-        restaurant.setCloseHour(dto.getCloseHour());
-        restaurant.setAddress(dto.getAddress());
+        restaurantFromDTO(dto, restaurant);
 
         return restaurantRepository.save(restaurant);
 

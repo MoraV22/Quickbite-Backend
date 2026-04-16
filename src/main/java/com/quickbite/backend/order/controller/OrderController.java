@@ -4,7 +4,6 @@ import com.quickbite.backend.order.domain.Order;
 import com.quickbite.backend.order.dto.OrderDTO;
 import com.quickbite.backend.order.service.OrderService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +28,7 @@ public class OrderController {
      * POST /api/order
      */
     @PostMapping
-    public ResponseEntity<Order> updatePaymentInfo(@RequestBody OrderDTO orderDTO){
+    public ResponseEntity<Order> updatePaymentInfo(@Valid @RequestBody OrderDTO orderDTO){
         Order createdOrder = orderService.createOrder(orderDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdOrder);
     }

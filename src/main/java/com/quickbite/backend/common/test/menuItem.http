@@ -1,0 +1,37 @@
+### Get all menu items
+GET http://localhost:8080/api/menu-item
+Accept: application/json
+
+### Get menu items by restaurant ID
+GET http://localhost:8080/api/menu-item/restaurantId/3
+Accept: application/json
+
+### Post a new menu item
+POST http://localhost:8080/api/menu-item
+Content-Type: application/json
+
+{
+  "id": 14,
+  "name": "Spaghetti Carbonara",
+  "description": "Classic Italian pasta dish with eggs, cheese, pancetta, and pepper.",
+  "price": 12.99,
+  "restaurantId": 5,
+  "calories": 850
+}
+
+### Update an existing menu item
+PUT http://localhost:8080/api/menu-item/id/17
+Content-Type: application/json
+
+{
+  "id": 17,
+  "name": "Spaghetti Carbonara",
+  "description": "Classic Italian pasta dish with eggs, cheese, pancetta, and pepper.",
+  "price": 13.99,
+  "restaurantId": 5,
+  "calories": 850
+}
+
+### Delete a menu item
+DELETE http://localhost:8080/api/menu-item/id/4
+Content-Type: application/json

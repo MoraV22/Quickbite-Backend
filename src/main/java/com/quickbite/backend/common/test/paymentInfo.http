@@ -1,0 +1,36 @@
+### Get payment info by id
+GET http://localhost:8080/api/payment-info/id/1
+Accept: application/json
+
+### Get payment info by user id
+GET http://localhost:8080/api/payment-info/userId/1
+Accept: application/json
+
+### Create new payment info
+POST http://localhost:8080/api/payment-info
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "cardLast4": "1234",
+  "expirationYear": 2030,
+  "expirationMonth": 5,
+  "brand": "Michigan Union"
+}
+
+### Update payment info
+PUT http://localhost:8080/api/payment-info/id/4
+Content-Type: application/json
+
+{
+  "id": 4,
+  "userId": 1,
+  "cardLast4": "1254",
+  "expirationYear": 2030,
+  "expirationMonth": 5,
+  "brand": "Michigan Union"
+}
+
+### Delete payment info
+DELETE http://localhost:8080/api/payment-info/id/4
+content-Type: application/json

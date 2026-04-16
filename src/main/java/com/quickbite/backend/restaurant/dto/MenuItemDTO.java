@@ -4,13 +4,13 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 public class MenuItemDTO {
-        @NotBlank
+        @NotNull
         private Integer id;
         @NotNull
         private Integer restaurantId;
-        @NotNull
+        @NotBlank
         private String name;
-        @NotNull
+        @NotBlank
         private String description;
         @NotNull
         private Double price;

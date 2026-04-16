@@ -13,10 +13,10 @@ import java.util.Optional;
 @Repository
 public interface RestaurantRepository extends JpaRepository<Restaurant, Integer> {
 
-    @Query(value = "SELECT r FROM restaurants r WHERE r.openhour <= :now AND r.closehour >= :now", nativeQuery = true)
+    @Query("SELECT r FROM Restaurant r WHERE r.openHour <= :now AND r.closeHour >= :now")
     List<Restaurant> findAnyOpen(@Param("now") LocalTime now);
 
-    @Query(value = "SELECT r FROM restaurants r WHERE r.rate >= :rate", nativeQuery = true)
+    @Query("SELECT r FROM Restaurant r WHERE r.rate >= :rate")
     List<Restaurant> findByRateGreaterThanEqual(@Param("rate")Integer rate);
 
     Optional<Restaurant> findByName(String name);

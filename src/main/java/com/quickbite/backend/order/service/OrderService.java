@@ -3,6 +3,7 @@ package com.quickbite.backend.order.service;
 import com.quickbite.backend.order.domain.Order;
 import com.quickbite.backend.order.domain.OrderItem;
 import com.quickbite.backend.order.dto.OrderDTO;
+import com.quickbite.backend.order.dto.OrderItemDTO;
 import com.quickbite.backend.order.repository.OrderItemRepository;
 import com.quickbite.backend.order.repository.OrderRepository;
 import com.quickbite.backend.restaurant.domain.MenuItem;
@@ -12,6 +13,7 @@ import com.quickbite.backend.user.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -37,29 +39,42 @@ public class OrderService {
 
         Order order = new Order();
         order.setUser(user);
-        order.setTotalPrice(orderDTO.getTotalPrice());
         order.setAddress(orderDTO.getAddress());
-        order.setTax(orderDTO.getTax());
         order.setStatus(orderDTO.getStatus());
         order.setCreatedAt(orderDTO.getCreatedAt());
 
-        Order savedOrder = orderRepository.save(order);
+        double totalPrice = 0.0;
+
+        if (orderDTO.getItems() != null && !orderDTO.getItems().isEmpty()) {
+            for (OrderItemDTO item : orderDTO.getItems()) {
+                totalPrice += item.getPrice() * item.getQuantity();
+            }
+        } else {
+            throw new IllegalArgumentException("Order must contain at least one item");
+        }
+        double tax = totalPrice *.16;
+        order.setTax(tax);
+        order.setTotalPrice(totalPrice+tax);
+        orderRepository.save(order);
+        List<OrderItem> orderItems = new ArrayList<>();
 
         // Add items to order
         if (orderDTO.getItems() != null && !orderDTO.getItems().isEmpty()) {
             orderDTO.getItems().forEach(itemDTO -> {
                 OrderItem orderItem = new OrderItem();
-                orderItem.setOrder(savedOrder);
+                orderItem.setOrder(order);
                 MenuItem menuItem = menuItemRepository.findById(itemDTO.getIdItem())
                         .orElseThrow(() -> new RuntimeException("MenuItem not found"));
                 orderItem.setMenuItem(menuItem);
                 orderItem.setQuantity(itemDTO.getQuantity());
                 orderItem.setPrice(itemDTO.getPrice());
                 orderItemRepository.save(orderItem);
+                orderItems.add(orderItem);
+
             });
         }
-
-        return savedOrder;
+        order.setOrderItems(orderItems);
+        return order;
     }
 
     // UPDATE: Order status/address

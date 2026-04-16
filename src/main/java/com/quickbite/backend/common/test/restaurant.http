@@ -1,0 +1,49 @@
+### Get all restaurants
+GET http://localhost:8080/api/restaurant
+Accept: application/json
+
+### Get a specific restaurant by ID
+GET http://localhost:8080/api/restaurant/id/3
+
+### Get a specific restaurant by name
+GET http://localhost:8080/api/restaurant/name/Sushi%20Zen
+
+### Get opens restaurants
+GET http://localhost:8080/api/restaurant/open
+
+### Get restaurants by rate
+GET http://localhost:8080/api/restaurant/rate/4
+
+### Post a new restaurant
+POST http://localhost:8080/api/restaurant
+Content-Type: application/json
+
+{
+  "id": 5,
+  "name": "Ifeanyi's Diner",
+  "foodType": "Italian",
+  "address": "123 Main St, Anytown",
+  "openHour": "08:00",
+  "closeHour": "22:00",
+  "rate": 4
+
+}
+
+### Update an existing restaurant
+PUT http://localhost:8080/api/restaurant/id/5
+Content-Type: application/json
+
+{
+  "id": 5,
+  "name": "Ifeanyi's Diner",
+  "foodType": "African",
+  "address": "123 Main St, Anytown",
+  "openHour": "08:00",
+  "closeHour": "22:00",
+  "rate": 4
+}
+
+### Delete a restaurant by ID
+DELETE http://localhost:8080/api/restaurant/id/1
+Content-Type: application/json
+

@@ -60,7 +60,7 @@ public class PaymentInfoController {
      * Get payment info by user id
      * GET api/payment-info/userId/{userId}
       */
-    @GetMapping("/user/{userId}")
+    @GetMapping("/userId/{userId}")
     public ResponseEntity<List<PaymentInfo>> getPaymentInfoByUserId(@PathVariable Integer userId) {
         List<PaymentInfo> paymentInfos = paymentInfoService.getPaymentInfoByUserId(userId);
         return ResponseEntity.ok(paymentInfos);

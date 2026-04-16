@@ -6,6 +6,7 @@ import com.quickbite.backend.user.domain.User;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class Order {
     public double tax;
 
     @Column(nullable = false)
-    public LocalTime createdAt;
+    public LocalDateTime createdAt;
 
     @Enumerated(EnumType.STRING)
     public OrderStatus status;
@@ -49,7 +50,7 @@ public class Order {
         this.address = address;
         this.tax = tax;
         this.user = user;
-        this.createdAt = LocalTime.now();
+        this.createdAt = LocalDateTime.now();
         this.status = OrderStatus.CREATED;
     }
 
@@ -66,8 +67,8 @@ public class Order {
     public double getTax() { return tax; }
     public void setTax(double tax) { this.tax = tax; }
 
-    public LocalTime getCreatedAt() { return createdAt; }
-    public void setCreatedAt(LocalTime createdAt) { this.createdAt = createdAt; }
+    public LocalDateTime getCreatedAt() { return createdAt; }
+    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
 
     public OrderStatus getStatus() { return status; }
     public void setStatus(OrderStatus status) { this.status = status; }
