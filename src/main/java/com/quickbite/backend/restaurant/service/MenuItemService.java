@@ -35,7 +35,7 @@ public class MenuItemService {
     }
 
     public List<MenuItem> findByRestaurant(Integer restaurantId){
-        return menuItemRepository.findByRestaurant(restaurantId);
+        return menuItemRepository.findByRestaurantId(restaurantId);
     }
 
     public MenuItem updateMenuItem(MenuItemDTO dto) {

@@ -10,7 +10,6 @@ import java.util.List;
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Integer> {
 
-    @Query(value="SELECT o FROM orders o WHERE o.id_user= :userId", nativeQuery = true)
-    List<Order> findByUser(Integer userId);
+    List<Order> findByUserId(Integer userId);
 
 }

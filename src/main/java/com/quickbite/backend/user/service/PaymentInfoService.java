@@ -94,7 +94,7 @@ public class PaymentInfoService {
         if(!paymentInfoRepository.existsById(userId)) {
             throw new EntityNotFoundException("User not found with ID: " + userId);
         }
-        return paymentInfoRepository.findByUser(userId);
+        return paymentInfoRepository.findByUserId(userId);
     }
 
     /**

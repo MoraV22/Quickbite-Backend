@@ -1,6 +1,7 @@
 package com.quickbite.backend.restaurant.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.quickbite.backend.order.domain.OrderItem;
 import jakarta.persistence.*;
 
@@ -13,10 +14,12 @@ public class MenuItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "restaurant_id", nullable = false)
     private Restaurant restaurant;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "menuItem", cascade = CascadeType.ALL, orphanRemoval = true)
     List<OrderItem> orderItems;
 

@@ -1,4 +1,5 @@
 package com.quickbite.backend.user.domain;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -25,6 +26,7 @@ public class PaymentInfo {
     @Column(nullable = false)
     private Integer expirationYear;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "id_user", nullable = false)
     private User user;

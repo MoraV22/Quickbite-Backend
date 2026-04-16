@@ -11,9 +11,6 @@ import java.util.List;
 @Repository
 public interface MenuItemRepository extends JpaRepository<MenuItem, Integer> {
 
-    @Query(value = "SELECT m FROM menu_items m WHERE m.restaurant_id= :restaurantId", nativeQuery = true)
-    List<MenuItem> findByRestaurant(@Param("restaurantId") Integer restaurantId);
+    List<MenuItem> findByRestaurantId(Integer restaurantId);
 
-    @Query(value = "DELETE FROM menu_items m WHERE m.id= :id", nativeQuery = true)
-    void deleteById(@Param("id") Integer id);
 }

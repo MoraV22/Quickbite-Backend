@@ -11,9 +11,5 @@ import java.util.List;
 @Repository
 public interface PaymentInfoRepository extends JpaRepository<PaymentInfo, Integer> {
 
-    @Query(value = "SELECT p FROM payments_info p WHERE p.id_user= : userId", nativeQuery = true)
-    List<PaymentInfo> findByUser(@Param("userId") Integer userId);
-
-    @Query(value = "DELETE FROM payments_info p WHERE p.id= :id", nativeQuery = true)
-    void deleteById(@Param("id") Integer id);
+    List<PaymentInfo> findByUserId(Integer userId);
 }

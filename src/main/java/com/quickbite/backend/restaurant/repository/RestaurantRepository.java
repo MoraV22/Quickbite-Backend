@@ -19,10 +19,6 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, Integer>
     @Query(value = "SELECT r FROM restaurants r WHERE r.rate >= :rate", nativeQuery = true)
     List<Restaurant> findByRateGreaterThanEqual(@Param("rate")Integer rate);
 
-    @Query(value = "SELECT r FROM restaurants r WHERE r.name >= :name", nativeQuery = true)
-    Optional<Restaurant> findByName(@Param("name")String name);
-
-    @Query(value = "DELETE FROM restaurants r WHERE r.id= :id", nativeQuery = true)
-    void deleteById(@Param("id") Integer id);
+    Optional<Restaurant> findByName(String name);
 
 }

@@ -1,12 +1,13 @@
 package com.quickbite.backend.restaurant.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalTime;
 import java.util.List;
 
 @Entity
-@Table(name = "restaurant")
+@Table(name = "restaurants")
 public class Restaurant {
 
     @Id
@@ -31,6 +32,7 @@ public class Restaurant {
     @Column(nullable = false)
     private LocalTime closeHour;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<MenuItem> menuItems;
 

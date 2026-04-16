@@ -1,5 +1,6 @@
 package com.quickbite.backend.order.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.quickbite.backend.order.dto.OrderStatus;
 import com.quickbite.backend.user.domain.User;
 import jakarta.persistence.*;
@@ -35,8 +36,9 @@ public class Order {
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.LAZY)
     public List<OrderItem> orderItems;
 
+    @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "user_id")
+        @JoinColumn(name = "id_user")
     public User user;
 
     // Constructors

@@ -1,5 +1,7 @@
 package com.quickbite.backend.user.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.quickbite.backend.order.domain.Order;
 import com.quickbite.backend.user.dto.RoleType;
 import jakarta.persistence.*;
@@ -26,6 +28,7 @@ public class User {
     @Column(unique = true, nullable = false)
     private String email;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Column(nullable = false)
     private String password;
 
@@ -38,9 +41,11 @@ public class User {
     @Enumerated(EnumType.STRING)
     private RoleType userType;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PaymentInfo> paymentMethods;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Order> orders;
 

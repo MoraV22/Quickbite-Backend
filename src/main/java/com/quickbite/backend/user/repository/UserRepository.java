@@ -11,12 +11,8 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
 
-    @Query(value = "SELECT u FROM users u WHERE u.email= :email", nativeQuery = true)
-    Optional<User> findByEmail(@Param("email") String email);
+    Optional<User> findByEmail(String email);
 
-    @Query(value = "SELECT u from users u WHERE u.name = :name",  nativeQuery = true)
-    Optional<User> findByName(@Param("name") String name);
+    Optional<User> findByName(String name);
 
-    @Query(value = "DELETE FROM users u WHERE u.id= :id", nativeQuery = true)
-    void deleteById(@Param(("id")) Integer id);
 }
