@@ -2,6 +2,7 @@ package com.quickbite.backend.user.service;
 
 
 import com.quickbite.backend.user.domain.User;
+import com.quickbite.backend.user.dto.AuthUserDTO;
 import com.quickbite.backend.user.dto.UserDTO;
 import com.quickbite.backend.user.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -35,7 +36,7 @@ public class UserService {
         user.setPassword(dto.getPassword());
         user.setPhoneNumber(dto.getPhoneNumber());
         user.setUserType(dto.getUserType());
-        user.setRate(dto.getRate());
+        user.setRate(5); // Default user rate
 
         return userRepository.save(user);
     }
@@ -59,7 +60,14 @@ public class UserService {
                 .orElseThrow(() -> new EntityNotFoundException("User not found with name: " + name));
     }
 
-
+    public User auth(AuthUserDTO dto){
+        User user = userRepository.findByEmail(dto.getEmail())
+                .orElseThrow(() -> new EntityNotFoundException("User not found with email: " + dto.getEmail()));
+        if (user.getPassword().equals(dto.getPassword())) {
+            return user;
+        }
+        throw new IllegalArgumentException("Invalid password");
+    }
 
     // UPDATE USER
     public User updateUser(UserDTO dto, Integer id){

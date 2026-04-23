@@ -85,6 +85,11 @@ public class RestaurantService {
     }
 
         // UPDATE RESTAURANT
+
+// GET RESTAURANTS BY FOOD TYPE
+    public List<Restaurant> getByFoodType(String foodType) {
+        return restaurantRepository.findByFoodType(foodType);
+    }
     public Restaurant updateRestaurant(Integer id, RestaurantDTO dto) {
 
         Restaurant restaurant= restaurantRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Restaurant not found with id: " + id));

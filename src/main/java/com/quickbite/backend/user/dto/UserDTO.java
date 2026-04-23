@@ -20,7 +20,6 @@ public class UserDTO {
     @NotBlank
     private String password;
 
-    @NotNull
     private Integer rate;
 
     private String phoneNumber;
@@ -39,7 +38,6 @@ public class UserDTO {
         this.password = password;
         this.userType = userType;
         this.rate = 5;
-        this.rate = rate;
     }
 
     public UserDTO(Integer id,String name, String surname1, String email, String password, RoleType userType,  Integer rate) {

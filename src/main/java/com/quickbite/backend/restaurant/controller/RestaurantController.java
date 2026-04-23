@@ -94,6 +94,16 @@ public class RestaurantController {
     }
 
     /**
+     * Get restaurant by food type
+     * GET /api/restaurant/foodType/{foodType}
+     */
+    @GetMapping("/foodType/{foodType}")
+    public ResponseEntity<List<Restaurant>> getAllRestaurantsByFoodType(@PathVariable String foodType) {
+        List<Restaurant> response = restaurantService.getByFoodType(foodType);
+        return ResponseEntity.ok(response);
+    }
+
+    /**
      * Update restaurant info
      * PUT /api/restaurant/id/{id}
      */

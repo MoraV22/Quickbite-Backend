@@ -1,6 +1,7 @@
 package com.quickbite.backend.user.controller;
 
 import com.quickbite.backend.user.domain.User;
+import com.quickbite.backend.user.dto.AuthUserDTO;
 import com.quickbite.backend.user.dto.UserDTO;
 import com.quickbite.backend.user.service.UserService;
 import jakarta.validation.Valid;
@@ -9,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Objects;
 
 @RestController
 @RequestMapping("/api/user")
@@ -44,7 +44,7 @@ public class UserController {
 
     /**
      * Get user by ID
-     * GET /api/users/id/{id}
+     * GET /api/user/id/{id}
      */
     @GetMapping("/id/{id}")
     public ResponseEntity<User> getUserById(@PathVariable Integer id) {
@@ -53,8 +53,19 @@ public class UserController {
     }
 
     /**
+     * Authenticate user by email and password
+     * GET /api/user/auth
+     */
+
+    @PostMapping("/auth")
+    public ResponseEntity<User> getUserByEmail(@Valid @RequestBody AuthUserDTO  authUserDTO) {
+        User response = userService.auth(authUserDTO);
+        return ResponseEntity.ok(response);
+    }
+
+    /**
      * Get user by name
-     * GET /api/users/name/{name}
+     * GET /api/user/name/{name}
      */
     @GetMapping("/name/{name}")
     public ResponseEntity<User> getUserByName(@PathVariable String name) {
@@ -64,7 +75,7 @@ public class UserController {
 
     /**
      * Update user information
-     * PUT /api/users/id/{id}
+     * PUT /api/user/id/{id}
      */
     @PutMapping("/id/{id}")
     public ResponseEntity<User> updateUser(
@@ -76,7 +87,7 @@ public class UserController {
 
     /**
      * Delete a user
-     * DELETE /api/users/id/{id}
+     * DELETE /api/user/id/{id}
      */
     @DeleteMapping("/id/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Integer id) {

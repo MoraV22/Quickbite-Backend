@@ -52,6 +52,16 @@ public class MenuItemController {
     }
 
     /**
+     * Get menu item by name
+     * GET /api/menu-item/name/{name}
+     */
+    @GetMapping("/name/{name}")
+    public ResponseEntity<MenuItem> getAllMenuItemsByName(@PathVariable String name){
+        MenuItem menuItem = menuItemService.findByName(name);
+        return ResponseEntity.ok(menuItem);
+    }
+
+    /**
      * update a menu item
      * PUT /api/menu-item/id/{id}
      */

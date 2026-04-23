@@ -13,14 +13,13 @@ POST http://localhost:8080/api/user
 Content-Type: application/json
 
 {
-  "name": "Anthony",
-  "surname1": "Mora",
+  "name": "Benjamin",
+  "surname1": "Oropecha",
   "surname2": "Acosta",
-  "email": "miss.bro@mind.com",
-  "password": "1812",
-  "phoneNumber": "5518343724",
-  "userType": "RESTAURANT_OWNER",
-  "rate":5
+  "email": "miss.bro@why.net",
+  "password": "1234",
+  "phoneNumber": "1209038475",
+  "userType": "CUSTOMER"
 }
 
 ### Update an existing user
@@ -41,3 +40,13 @@ Content-Type: application/json
 ### Delete a user by ID
 DELETE http://localhost:8080/api/user/id/2
 Content-Type: application/json
+
+
+### Authenticate a user
+POST http://localhost:8080/api/user/auth
+Content-Type: application/json
+
+{
+  "email": "miss.bro@why.net",
+  "password": "1234"
+}
