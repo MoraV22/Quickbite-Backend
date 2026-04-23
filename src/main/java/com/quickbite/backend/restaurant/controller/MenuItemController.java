@@ -52,6 +52,16 @@ public class MenuItemController {
     }
 
     /**
+     * get menu items by restaurant name
+     * GET /api/menu-item/restaurantName/{restaurantName}
+     */
+    @GetMapping("/restaurantName/{restaurantName}")
+    public ResponseEntity<List<MenuItem>> getAllMenuItemsByRestaurant(@PathVariable String restaurantName){
+        List<MenuItem> menuItems = menuItemService.findByRestaurantName(restaurantName);
+        return ResponseEntity.ok(menuItems);
+    }
+
+    /**
      * Get menu item by name
      * GET /api/menu-item/name/{name}
      */

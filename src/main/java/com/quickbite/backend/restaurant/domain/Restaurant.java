@@ -12,6 +12,7 @@ import java.util.List;
 public class Restaurant {
 
     @Id
+    @JsonIgnore
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 

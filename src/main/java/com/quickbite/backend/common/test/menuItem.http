@@ -6,6 +6,10 @@ Accept: application/json
 GET http://localhost:8080/api/menu-item/restaurantId/3
 Accept: application/json
 
+### Get menu items by name
+GET http://localhost:8080/api/menu-item/restaurantName/Tacos%20El%20Pastorcito
+Accept: application/json
+
 ### Post a new menu item
 POST http://localhost:8080/api/menu-item
 Content-Type: application/json

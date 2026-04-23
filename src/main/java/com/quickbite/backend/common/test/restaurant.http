@@ -12,10 +12,13 @@ GET http://localhost:8080/api/restaurant/name/Sushi%20Zen
 GET http://localhost:8080/api/restaurant/open
 
 ### Get restaurants by rate
-GET http://localhost:8080/api/restaurant/rate/4
+GET http://localhost:8080/api/restaurant/rate/5
 
 ### Get restaurants by food type
-GET http://localhost:8080/api/restaurant/foodType/Italian
+GET http://localhost:8080/api/restaurant/foodType/Chinese
+
+### Get food types
+GET http://localhost:8080/api/restaurant/foodType
 
 ### Post a new restaurant
 POST http://localhost:8080/api/restaurant

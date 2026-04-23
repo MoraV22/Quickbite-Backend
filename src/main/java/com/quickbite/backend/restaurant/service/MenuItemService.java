@@ -43,6 +43,11 @@ public class MenuItemService {
         return menuItemRepository.findByName(name);
     }
 
+    public List<MenuItem> findByRestaurantName(String restaurantName){
+        Restaurant r= restaurantRepository.findByName(restaurantName).orElseThrow(()-> new IllegalArgumentException("Restaurant with name " + restaurantName + " does not exist"));
+        return menuItemRepository.findByRestaurantName(restaurantName);
+    }
+
     public MenuItem updateMenuItem(MenuItemDTO dto, Integer menuItemId) {
         Restaurant restaurant = restaurantRepository.findById(dto.getRestaurantId()).orElseThrow(()-> new IllegalArgumentException("Restaurant with id " + dto.getRestaurantId() + " does not exist"));
         MenuItem menuItem = menuItemRepository.findById(menuItemId).orElseThrow(()-> new IllegalArgumentException("Menu item with id " + menuItemId + " does not exist"));

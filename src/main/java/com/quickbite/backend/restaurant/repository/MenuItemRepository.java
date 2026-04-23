@@ -15,4 +15,7 @@ public interface MenuItemRepository extends JpaRepository<MenuItem, Integer> {
 
     MenuItem findByName(String name);
 
+    @Query("SELECT m FROM MenuItem m JOIN m.restaurant r WHERE r.name = :restaurantName")
+    List<MenuItem> findByRestaurantName(String restaurantName);
+
 }

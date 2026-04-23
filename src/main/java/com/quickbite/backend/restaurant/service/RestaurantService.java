@@ -84,6 +84,11 @@ public class RestaurantService {
         return restaurantRepository.findAll();
     }
 
+     // GET ALL FOOD TYPES
+    public List<String> getAllFoodTypes() {
+        return restaurantRepository.findFoodTypes();
+    }
+
         // UPDATE RESTAURANT
 
 // GET RESTAURANTS BY FOOD TYPE

@@ -104,6 +104,16 @@ public class RestaurantController {
     }
 
     /**
+     * Get all food types available
+     * GET /apu/restaurant/foodType
+     */
+    @GetMapping("/foodType")
+    public ResponseEntity<List<String>> getAllFoodTypes() {
+        List<String> foodTypes = restaurantService.getAllFoodTypes();
+        return ResponseEntity.ok(foodTypes);
+    }
+
+    /**
      * Update restaurant info
      * PUT /api/restaurant/id/{id}
      */
